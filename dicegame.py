@@ -4,11 +4,21 @@ from collections import Counter
 
 import argparse
 
+
+
 class DieGame:
+    """
+        Encapsulates a dice game.
+        @param die_num: number of dice in game
+    """
     def __init__(self, die_num=6):
         self.active_dice = die_num
-        
+
+
     def play(self):
+        """
+            Rolls dice until the game is over.
+        """
         final_score = 0
         while self.active_dice > 0:
             final_score += self.roll()
@@ -16,6 +26,10 @@ class DieGame:
         return final_score
             
     def roll(self):
+        """
+            Performs a single dice roll.
+            @return Score of the roll
+        """
         dice = [random.randint(1, 6) for x in range(self.active_dice)]
         c = Counter(dice)
         
@@ -28,6 +42,12 @@ class DieGame:
 
 
 def run_simulations(sims, dies):
+    """
+        Runs the dice game a certain amount of times and prints
+        count of each game and number of times each score was reached.
+        @param sims number of times to run game
+        @param dies number of dies to run per game
+    """
     
     print("Number of simulations was {} using {} dice.".format(sims, dies))
     
